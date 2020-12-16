@@ -1,0 +1,22 @@
+//https://leetcode.com/problems/first-bad-version/
+
+
+class Solution {
+public:
+    int firstBadVersion(int n) {
+        int low=1,high=n,mid,pos=1;
+        while(low<=high){
+            mid = low + (high-low)/2;
+            bool x = isBadVersion(mid);
+            if(x == true){
+                pos = mid;
+                high = mid-1;
+            }
+            else
+                low = mid+1;
+        }
+
+        return pos;
+        
+    }
+};
