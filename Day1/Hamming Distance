@@ -1,0 +1,15 @@
+//https://leetcode.com/problems/hamming-distance/
+
+
+class Solution {
+public:
+    int hammingDistance(int x, int y) {
+        int xr=x^y,count=0;  
+        while(xr){         
+            count=count + (xr&1);
+            xr=xr>>1;       
+        }
+        return count;   
+        
+    }
+};
