@@ -1,0 +1,25 @@
+//https://leetcode.com/problems/fair-candy-swap/
+
+class Solution {
+public:
+    vector<int> fairCandySwap(vector<int>& A, vector<int>& B) {
+        
+    unordered_map<int, int> umap;
+    int sumA=0, sumB=0;
+    for(auto i:A)   
+        sumA+=i;
+    for(auto i:B){
+        sumB+=i;
+        umap[i]++;
+    }
+    sumA -= sumB;
+    if(sumA == 0)   
+        return {A[0], B[0]};
+    for(int i=0; i<A.size(); i++){
+        if(umap.count(A[i] - sumA/2))  
+            return {A[i], A[i] - sumA/2};
+    }
+        
+   return {};
+    }
+};
