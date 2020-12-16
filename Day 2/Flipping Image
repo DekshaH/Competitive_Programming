@@ -1,0 +1,18 @@
+//https://leetcode.com/problems/flipping-an-image/
+
+
+class Solution {
+public:
+    vector<vector<int>> flipAndInvertImage(vector<vector<int>>& A) {
+        int row = A.size(), col = A[0].size(),i,j,k;
+        for(i = 0; i < row; i++){
+            for(j = 0, k = col - 1; j <= k; j++, k--){
+                int x = A[i][j];
+                A[i][j] = !A[i][k];
+                if(j < k) 
+                A[i][k] = !x;
+            }
+        }
+        return A;
+    }
+};
