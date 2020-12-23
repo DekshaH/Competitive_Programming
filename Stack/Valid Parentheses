@@ -4,7 +4,7 @@ class Solution {
 public:
     bool isValid(string s) {
         
-        int sSize, i;
+        int i;
             stack<char> q;
 
             if(s.size() && (s.size()%2 ==0))
