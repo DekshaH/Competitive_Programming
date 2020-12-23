@@ -1,0 +1,36 @@
+//https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/submissions/
+
+
+class Solution {
+public:
+    string removeDuplicates(string S) {
+        stack<char> q;
+        
+        for(int i =0; i<S.length(); i++){
+            
+              if(!q.empty()){
+                  
+                  if(S[i]==q.top()){
+                      q.pop();
+                  }
+                  
+                  else q.push(S[i]);
+                  
+              }
+            
+            
+            else q.push(S[i]);
+            
+        }
+        
+        string a ="";
+      
+        while(!q.empty()){
+            a+=q.top();
+            q.pop();
+        }
+      reverse(a.begin(),a.end());
+      return a;
+    }
+    
+};
