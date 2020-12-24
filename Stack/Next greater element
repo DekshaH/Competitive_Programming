@@ -1,0 +1,26 @@
+//https://leetcode.com/problems/next-greater-element-i/submissions/
+
+
+class Solution {
+public:
+    vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {       
+        stack<int> q;
+        map<int, int> m;
+        for(int n:nums2) {
+            while(!q.empty() && q.top() < n) {
+                m[q.top()] = n;
+                q.pop();
+            }
+            q.push(n);
+        }
+        
+        vector<int> a(nums1.size());
+        for(int i = 0; i<nums1.size(); i++) {
+            if(m.count(nums1[i]))
+                a[i] = m[nums1[i]];
+            else
+                a[i] = -1;
+        }
+        return a;
+    }
+};
