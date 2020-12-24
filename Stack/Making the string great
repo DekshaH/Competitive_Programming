@@ -1,0 +1,23 @@
+//https://leetcode.com/problems/make-the-string-great/submissions/
+
+class Solution {
+public:
+    string makeGood(string s) {
+        stack<char> q;
+        for(int i=0;i<s.length();i++)
+        {
+            if(!q.empty() && ((s[i] == q.top()-32) || (s[i] == q.top()+32)))
+                q.pop();
+            else
+                q.push(s[i]);
+        }
+        string a = "";
+        while(!q.empty())
+        {
+            a=q.top()+a;
+            q.pop();
+        }
+        return a;
+     
+    }
+};
