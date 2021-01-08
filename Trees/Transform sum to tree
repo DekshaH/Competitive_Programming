@@ -1,0 +1,15 @@
+//https://practice.geeksforgeeks.org/problems/transform-to-sum-tree/1/#
+
+int ans(Node* node){
+   if(node==nullptr)
+    return 0;
+   int d=node->data;
+   int lsum=ans(node->left);
+   int rsum=ans(node->right);
+   node->data=lsum+rsum;
+   return d+node->data;
+}
+void toSumTree(Node *node)
+{
+   ans(node); 
+}
