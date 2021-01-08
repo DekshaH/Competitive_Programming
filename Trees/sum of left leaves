@@ -1,0 +1,22 @@
+//https://leetcode.com/problems/sum-of-left-leaves/
+
+class Solution {
+public:
+    bool isleaf(TreeNode * node){
+        return (node -> left == nullptr) && (node -> right == nullptr);
+    }
+    int sumOfLeftLeaves(TreeNode* root) {
+         
+        if(root == nullptr) 
+            return 0;
+        int ans = sumOfLeftLeaves(root -> right);
+        if(root -> left && isleaf(root -> left)){
+            ans += root-> left-> val;
+        }
+        else{
+            ans += sumOfLeftLeaves(root -> left);
+        }
+        return ans;
+        
+    }
+};
