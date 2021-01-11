@@ -1,0 +1,30 @@
+//https://practice.geeksforgeeks.org/problems/top-view-of-binary-tree/1#
+
+void fun(Node*node,unordered_map<int,pair<int,int>> &rec,int dist,int level){
+	if(node==nullptr)
+		return;
+	if(rec.find(dist)==rec.end()){
+		rec[dist]=make_pair(node->data,level);
+	}
+	else {
+		if(rec[dist].second>level)
+			rec[dist]=make_pair(node->data,level);
+		}
+	fun(node->left,rec,dist-1,level+1);
+	fun(node->right,rec,dist+1,level+1);
+	return;
+}
+void topView(struct Node *root)
+{
+    unordered_map<int,pair<int,int>> rec;
+    fun(root,rec,0,0);
+    vector<int> level;
+    for(auto i:rec){
+    	level.push_back(i.first);
+    }
+    sort(level.begin(),level.end());
+    for(auto j:level){
+    	cout<<rec.find(j)->second.first<<" ";
+    }
+
+}
