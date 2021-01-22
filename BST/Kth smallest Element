@@ -1,0 +1,22 @@
+//https://practice.geeksforgeeks.org/problems/find-k-th-smallest-element-in-bst/1/#
+
+
+void find(Node* root , int &k , int& val){
+    if(root==NULL)
+        return;
+    if(val != -1)
+        return;
+    find(root->left , k , val);
+    k -= 1;
+    if(k == 0)
+        val = root->data;
+    
+    find(root->right , k , val);
+}
+int KthSmallestElement(Node *root, int K)
+{
+    //add code here.
+    int val = -1;
+    find(root , K , val);
+    return val;
+}
